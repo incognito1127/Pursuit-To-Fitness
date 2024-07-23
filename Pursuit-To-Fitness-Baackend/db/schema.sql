@@ -11,4 +11,4 @@ CREATE TABLE workouts (
     intensity_level INT,
     muscles TEXT,
     date date
-)
+);
