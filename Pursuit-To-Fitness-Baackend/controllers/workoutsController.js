@@ -1,54 +1,51 @@
 const express = require("express");
 const router = express.Router();
-const workoutArray = require("../models/workout");
+const { getAllWorkouts, getWorkout, createWorkout, deleteWorkout, updateWorkout } = require("../queries/workout");
 
 // GET ALL WORKOUTS
-router.get("/", (req, res) => {
-  res.status(200).send(workoutArray);
+router.get("/", async (req, res) => {
+  const allWorkouts = await getAllWorkouts();
+  if (allWorkouts[0]) {
+    res.status(200).json(allWorkouts);
+  } else {
+    res.status(500).json({ error: "server error" });
+  }
 });
 
 
 // GET A SINGLE WORKOUT
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  const workout = workoutArray.find(el => el.id === +id)
+  const workout = await getWorkout(id);
   if (workout) {
-    res.status(200).send(workout)
+    res.json(workout);
   } else {
-    res.status(404).json({error: `Workout with id: ${id} not found!`})
+    res.status(404).json({ error: "not found" });
   }
-})
+});
 
 // CREATE A NEW WORKOUT
-router.post("/", (req, res) => {
-  const currentWorkout = {id: workoutArray.length + 1, ...req.body}
-  workoutArray.push(currentWorkout)
-})
+router.post("/", async (req, res) => {
+  const workout = await createWorkout(req.body);
+  res.json(workout);
+});
 
 // DELETE A WORKOUT 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", async (req, res) => {
   const { id } = req.params;
-  const workoutToDeleteIndex = workoutArray.findIndex(workout => workout.id === +id)
-
-  if (workoutToDeleteIndex !== -1) {
-    workoutArray.splice(workoutToDeleteIndex, 1)
-    res.redirect("/workouts")
+  const deletedWorkout = await deleteWorkout(id);
+  if (deletedWorkout.id) {
+    res.status(200).json(deletedWorkout);
   } else {
-    res.status(404).send({error: `Workout with id: ${id} not found!`})
+    res.status(404).json("Workout not found");
   }
-})
+});
 
 // UPDATE A WORKOUT 
-router.put("/:id", (req, res) => {
+router.put("/:id", async (req, res) => {
   const { id } = req.params;
-  const workoutToUpdateIndex = workoutArray.findIndex(workout => workout.id === +id)
-
-  if (workoutToUpdateIndex !== -1) {
-    workoutArray[workoutToUpdateIndex] = req.body
-    res.status(200).json(workoutArray[workoutToUpdateIndex])
-  } else {
-    res.status(404).send({error: `Workout with id: ${id} not found!`})
-  }
-})
+  const updatedWorkout = await updateWorkout(id, req.body);
+  res.status(200).json(updatedWorkout);
+});
 
 module.exports = router;
