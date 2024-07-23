@@ -1,4 +1,4 @@
-app.js
+
 // DEPENDENCIES
 const express = require('express');
 const cors = require("cors");

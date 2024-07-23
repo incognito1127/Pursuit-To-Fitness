@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const workoutArray = require("../models/workout");
-const { getAllWorkouts, getWorkout } = require("../queries/workout");
+const { getAllWorkouts, getWorkout, createWorkout, deleteWorkout, updateWorkout } = require("../queries/workout");
 
 // GET ALL WORKOUTS
 router.get("/", async (req, res) => {
@@ -26,35 +25,27 @@ router.get("/:id", async (req, res) => {
 });
 
 // CREATE A NEW WORKOUT
-router.post("/", checkBoolean, checkName, async (req, res) => {
-  const color = await createColor(req.body);
-  res.json(color);
+router.post("/", async (req, res) => {
+  const workout = await createWorkout(req.body);
+  res.json(workout);
 });
 
 // DELETE A WORKOUT 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", async (req, res) => {
   const { id } = req.params;
-  const workoutToDeleteIndex = workoutArray.findIndex(workout => workout.id === +id)
-
-  if (workoutToDeleteIndex !== -1) {
-    workoutArray.splice(workoutToDeleteIndex, 1)
-    res.redirect("/workouts")
+  const deletedWorkout = await deleteWorkout(id);
+  if (deletedWorkout.id) {
+    res.status(200).json(deletedWorkout);
   } else {
-    res.status(404).send({error: `Workout with id: ${id} not found!`})
+    res.status(404).json("Workout not found");
   }
-})
+});
 
 // UPDATE A WORKOUT 
-router.put("/:id", (req, res) => {
+router.put("/:id", async (req, res) => {
   const { id } = req.params;
-  const workoutToUpdateIndex = workoutArray.findIndex(workout => workout.id === +id)
-
-  if (workoutToUpdateIndex !== -1) {
-    workoutArray[workoutToUpdateIndex] = req.body
-    res.status(200).json(workoutArray[workoutToUpdateIndex])
-  } else {
-    res.status(404).send({error: `Workout with id: ${id} not found!`})
-  }
-})
+  const updatedWorkout = await updateWorkout(id, req.body);
+  res.status(200).json(updatedWorkout);
+});
 
 module.exports = router;
