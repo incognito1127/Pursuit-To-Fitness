@@ -1,42 +1,71 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  background: linear-gradient(135deg, #217393, #5a1605);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+.human-body {
+  width: 207px;
+  position: relative;
+  padding-top: 240px;
+  height: 260px;
+  display: block;
+  margin: 40px auto;
+}
+.human-body svg:hover {
+  cursor: pointer;
+}
+.human-body svg:hover path {
+  fill: #ff1616;
+}
+.human-body svg {
+  position: absolute;
+  left: 50%;
+  fill: #16c7e3;
+}
+.human-body svg.head {
+  margin-left: -28.5px;
+  top: -6px;
+}
+.human-body svg.shoulder {
+  margin-left: -53.5px;
+  top: 69px;
+}
+.human-body svg.arm {
+  margin-left: -78px;
+  top: 112px;
+}
+.human-body svg.cheast {
+  margin-left: -43.5px;
+  top: 88px;
+}
+.human-body svg.stomach {
+  margin-left: -37.5px;
+  top: 130px;
+}
+.human-body svg.legs {
+  margin-left: -46.5px;
+  top: 205px;
+  z-index: 9999;
+}
+.human-body svg.hands {
+  margin-left: -102.5px;
+  top: 224px;
+}
+#area {
+  display: block;
+  width: 100%;
+  clear: both;
+  padding: 10px;
   text-align: center;
+  font-size: 25px;
+  font-family: Courier New;
+  color: #a5a5a5;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+#area #data {
+  color: black;
 }
