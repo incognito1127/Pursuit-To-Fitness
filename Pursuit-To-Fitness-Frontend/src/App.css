@@ -7,6 +7,10 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
+
+.test{
+  display: flex;
+}
 .human-body {
   width: 207px;
   position: relative;

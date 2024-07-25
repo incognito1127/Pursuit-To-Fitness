@@ -3,7 +3,7 @@ import WorkoutDetails from '../Components/WorkoutDetails'
 
 const Show = () => {
   return (
-    <div>Show
+    <div>
       <WorkoutDetails/>
     </div>
   )

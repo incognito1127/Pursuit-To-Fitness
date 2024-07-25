@@ -27,8 +27,8 @@ const WorkoutDetails = () => {
   return (
     <div>
       <h1>WorkoutDetails</h1>
-      <p>{workout.type}</p>
-      <p>{workout.durationInMinutes}</p>
+      <p>{workout.name}</p>
+      <p>{workout.muscles}</p>
       <button>Edit</button>
       <button>Delete</button>
     </div>
