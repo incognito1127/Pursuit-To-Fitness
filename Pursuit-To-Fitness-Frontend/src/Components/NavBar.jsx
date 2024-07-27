@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 //import './NavBar.css'; // Ensure you create and link this CSS file
 
-const NavBar = () => {
+const NavBar = ({setBodyPart}) => {
   return (
     <div>
       <nav className="navbar">
@@ -15,6 +15,9 @@ const NavBar = () => {
           </li>
           <li>
             <Link to="/workouts/new">New Workout</Link>
+          </li>
+          <li onClick={()=> setBodyPart("")}>
+            All Workouts
           </li>
         </ul>
       </nav>

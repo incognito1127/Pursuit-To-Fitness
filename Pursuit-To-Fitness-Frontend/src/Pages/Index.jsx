@@ -1,10 +1,10 @@
 import React from 'react'
 import Workouts from '../Components/Workouts'
 
-const Index = () => {
+const Index = ({filterWorkoutsByBodyPart, filteredWorkouts, bodyPart, workouts}) => {
   return (
     <div>
-      <Workouts/>
+      <Workouts filteredWorkouts = { filteredWorkouts } filterWorkoutsByBodyPart={ filterWorkoutsByBodyPart } bodyPart={ bodyPart } workouts = {workouts}/>
     </div>
   )
 }

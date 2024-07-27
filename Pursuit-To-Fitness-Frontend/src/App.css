@@ -169,3 +169,7 @@ label {
   background-color: #0056b3;
 }
 
+.is_favorite{
+  display: flex;
+}
+

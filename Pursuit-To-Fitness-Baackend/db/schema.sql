@@ -10,5 +10,6 @@ CREATE TABLE workouts (
     is_favorite BOOLEAN,
     intensity_level INT,
     muscles TEXT,
-    date date
+    description TEXT,
+    video TEXT
 );
