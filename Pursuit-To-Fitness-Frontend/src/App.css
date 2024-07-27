@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(135deg, #217393, #5a1605);
+  background: linear-gradient(135deg, #3dbaec, #b23718);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,12 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
-
+h1 {
+  font-family: "Rubik Doodle Shadow", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 80px;
+}
 .test{
   display: flex;
 }
@@ -73,3 +78,94 @@ body {
 #area #data {
   color: black;
 }
+
+/* Styles for the vertical navigation bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 155px; /* Adjust the width as needed */
+  background-color: #33333342;
+  padding-top: 1em;
+  z-index: 1000; /* Ensures the navbar is on top of other content */
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 10px 0; /* Adjust padding as needed */
+}
+
+.nav-links a:hover {
+  background-color: #575757;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.workout-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #b1acac;
+  border-radius: 4px;
+}
+
+.form-textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+

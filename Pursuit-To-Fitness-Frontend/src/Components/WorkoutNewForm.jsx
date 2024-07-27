@@ -30,7 +30,7 @@ const WorkoutNewForm = () => {
   }
 
   return (
-    <div>WorkoutNewForm
+    <div>
       <form onSubmit={handleSubmit}>
         <label>Name:</label>
         <input id='name' type='text' value={workout.name} onChange={handleTextChange}required/>

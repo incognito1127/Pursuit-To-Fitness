@@ -20,7 +20,7 @@ const Workouts = () => {
 
   return (
     <div className='test'>
-      <h1>Workouts</h1>
+      <h1></h1>
         <ul>
           {workouts.map(workout => { return <Link to={`/workouts/${workout.id}`}><li><h2>Workout:{workout.name}</h2><p>Body Part:{workout.body_part}</p><p>Description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem ullam necessitatibus ration</p></li></Link>
               })}
