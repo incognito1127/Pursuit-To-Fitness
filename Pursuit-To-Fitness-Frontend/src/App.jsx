@@ -30,7 +30,7 @@ function App() {
 
   function filterWorkoutsByBodyPart(ele){
     setBodyPart(ele)
-    setFilteredWorkouts(workouts.filter((ele) => ele.body_part.includes(bodyPart)))
+    setFilteredWorkouts(workouts.filter((ele) => ele.body_part.toLowerCase().includes(bodyPart.toLowerCase())))
   }
 
   return (
@@ -40,7 +40,7 @@ function App() {
         <main>
           <Routes>
             <Route path='/' element={ <Home/>} />
-            <Route path='/workouts' element={<Index filteredWorkouts = { filteredWorkouts } filterWorkoutsByBodyPart={ filterWorkoutsByBodyPart } bodyPart={ bodyPart } workouts = {workouts}/> }/>
+            <Route path='/workouts' element={<Index filteredWorkouts = { filteredWorkouts } filterWorkoutsByBodyPart={ filterWorkoutsByBodyPart } bodyPart={ bodyPart } workouts = {workouts} setBodyPart={setBodyPart}/> }/>
             <Route path='/workouts/:id' element={<Show/> } />
             <Route path='/workouts/:id/edit' element={ <Edit/>} />
             <Route path='/workouts/new' element={<New/> } />

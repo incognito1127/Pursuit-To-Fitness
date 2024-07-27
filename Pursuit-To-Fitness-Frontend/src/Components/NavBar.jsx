@@ -11,14 +11,14 @@ const NavBar = ({setBodyPart}) => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/workouts">Workouts</Link>
+            <Link to="/workouts" onClick={()=> setBodyPart("")}>Workouts</Link>
           </li>
           <li>
             <Link to="/workouts/new">New Workout</Link>
           </li>
 
           <li onClick={()=> setBodyPart("")}>
-            All Workouts</li>
+            <Link to>All Workouts</Link></li>
 
         </ul>
       </nav>
