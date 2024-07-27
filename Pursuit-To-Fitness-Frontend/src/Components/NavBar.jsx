@@ -16,6 +16,9 @@ const NavBar = () => {
           <li>
             <Link to="/workouts/new">New Workout</Link>
           </li>
+          <li>
+            <Link to="/workouts">All Workouts</Link>
+          </li>
         </ul>
       </nav>
     </div>
