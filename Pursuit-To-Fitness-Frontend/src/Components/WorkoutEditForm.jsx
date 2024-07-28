@@ -12,8 +12,8 @@ const WorkoutEditForm = () => {
     is_favorite: false,
     intensity_level: 0,
     muscles: '',
-    date: '',
-    video_urls: {}
+    description: '',
+    video: ''
   });
 
   useEffect(() => {
@@ -23,38 +23,35 @@ const WorkoutEditForm = () => {
       .catch(err => console.error(err));
   }, [id]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setWorkout(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
+  const handleTextChange = (e) => {
+    setWorkout({...workout, [e.target.id]:e.target.value})
+  }
 
-  const handleVideoUrlChange = (e) => {
-    const { name, value } = e.target;
-    setWorkout(prevState => ({
-      ...prevState,
-      video_urls: {
-        ...prevState.video_urls,
-        [name]: value
+  const updateWorkout = () => {
+    fetch(`${API}/workouts/${id}` , {
+      method: "PUT",
+      body: JSON.stringify(workout),
+      headers: {
+        "Content-Type": "application/json"
       }
-    }));
-  };
+    })
+    .then(() => {
+      navigate(`/workouts/${id}`)
+    })
+    .catch((error) => console.log(error))
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`${API}/workouts/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(workout)
-    })
-      .then(() => navigate(`/workouts/${id}`))
-      .catch(err => console.error(err));
-  };
-
+    updateWorkout();
+    setWorkout({name: '',
+      body_part: '',
+      is_favorite: false,
+      intensity_level: 0,
+      muscles: '',
+      date: '',
+      video: ''})
+  }
   return (
     <div>
       <h1>Edit Workout</h1>
@@ -64,8 +61,9 @@ const WorkoutEditForm = () => {
           <input
             type="text"
             name="name"
+            id="name"
             value={workout.name}
-            onChange={handleChange}
+            onChange={handleTextChange}
           />
         </div>
         <div>
@@ -73,8 +71,9 @@ const WorkoutEditForm = () => {
           <input
             type="text"
             name="body_part"
+            id="body_part"
             value={workout.body_part}
-            onChange={handleChange}
+            onChange={handleTextChange}
           />
         </div>
         <div>
@@ -94,8 +93,9 @@ const WorkoutEditForm = () => {
           <input
             type="number"
             name="intensity_level"
+            id="intensity_level"
             value={workout.intensity_level}
-            onChange={handleChange}
+            onChange={handleTextChange}
           />
         </div>
         <div>
@@ -103,32 +103,33 @@ const WorkoutEditForm = () => {
           <input
             type="text"
             name="muscles"
+            id="muscles"
             value={workout.muscles}
-            onChange={handleChange}
+            onChange={handleTextChange}
           />
         </div>
         <div>
-          <label>Date:</label>
+          <label>Description:</label>
           <input
-            type="date"
-            name="date"
-            value={workout.date}
-            onChange={handleChange}
+            type="text"
+            name="description"
+            id="description"
+            value={workout.description}
+            onChange={handleTextChange}
           />
         </div>
         <div>
           <label>Video URLs:</label>
-          {Object.keys(workout.video_urls).map(bodyPart => (
-            <div key={bodyPart}>
-              <label>{bodyPart.charAt(0).toUpperCase() + bodyPart.slice(1)}:</label>
+            <div key={id}>
+              <label>Video</label>
               <input
                 type="text"
-                name={bodyPart}
-                value={workout.video_urls[bodyPart]}
-                onChange={handleVideoUrlChange}
+                name="video"
+                id="video"
+                value={workout.video}
+                onChange={handleTextChange}
               />
             </div>
-          ))}
         </div>
         <button type="submit">Save</button>
       </form>
