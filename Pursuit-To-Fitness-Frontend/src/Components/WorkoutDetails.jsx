@@ -15,7 +15,6 @@ const WorkoutDetails = () => {
       return res.json()
       })
       .then(resJSON => {
-        console.log(resJSON)
         setWorkout(resJSON)
       })
       .catch(() => {
@@ -23,6 +22,14 @@ const WorkoutDetails = () => {
     })
 
   }, [id, navigate])
+  
+  function handleDelete(){
+    fetch(`${API}/workouts/${id}`, {
+      method: 'DELETE'
+    })
+    .then(() => navigate('/workouts'))
+    .catch(err => console.log(err));
+  }
 
   
 
@@ -36,8 +43,8 @@ const WorkoutDetails = () => {
       <p>{workout.name}</p>
       <p>{workout.muscles}</p>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/L6M0j6AwDGQ?si=OwCNFEYIUHJG-C5p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      
-      
+      <button>Edit</button>
+      <button onClick={handleDelete} >Delete</button>
     </div>
   )
 }
