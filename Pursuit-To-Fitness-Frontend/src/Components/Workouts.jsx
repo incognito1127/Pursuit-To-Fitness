@@ -32,4 +32,5 @@ const Workouts = ({filterWorkoutsByBodyPart, filteredWorkouts, bodyPart, workout
   )
 }
 
+
 export default Workouts

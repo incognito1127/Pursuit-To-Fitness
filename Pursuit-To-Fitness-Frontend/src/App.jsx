@@ -43,7 +43,9 @@ function App() {
             <Route path='/workouts' element={<Index filteredWorkouts = { filteredWorkouts } filterWorkoutsByBodyPart={ filterWorkoutsByBodyPart } bodyPart={ bodyPart } workouts = {workouts} setBodyPart={setBodyPart}/> }/>
             <Route path='/workouts/:id' element={<Show/> } />
             <Route path='/workouts/:id/edit' element={ <Edit/>} />
+            
             <Route path='/workouts/new' element={<New/> } />
+            
           </Routes>
         </main>
       </Router>
