@@ -3,7 +3,7 @@ import WorkoutEditForm from '../Components/WorkoutEditForm'
 
 const Edit = () => {
   return (
-    <div>Edit
+    <div>
       <WorkoutEditForm/>
     </div>
   )

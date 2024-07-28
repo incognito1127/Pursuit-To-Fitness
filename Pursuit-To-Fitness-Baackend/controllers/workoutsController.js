@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { getAllWorkouts, getWorkout, createWorkout, deleteWorkout, updateWorkout } = require("../queries/workout");
 
+
+
 // GET ALL WORKOUTS
 router.get("/", async (req, res) => {
   const allWorkouts = await getAllWorkouts();
