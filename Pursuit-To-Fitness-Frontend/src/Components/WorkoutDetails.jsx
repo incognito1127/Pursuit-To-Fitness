@@ -15,7 +15,6 @@ const WorkoutDetails = () => {
       return res.json()
       })
       .then(resJSON => {
-        console.log(resJSON)
         setWorkout(resJSON)
       })
       .catch(() => {
@@ -23,6 +22,14 @@ const WorkoutDetails = () => {
     })
 
   }, [id, navigate])
+  
+  function handleDelete(){
+    fetch(`${API}/workouts/${id}`, {
+      method: 'DELETE'
+    })
+    .then(() => navigate('/workouts'))
+    .catch(err => console.log(err));
+  }
 
   return (
     <div>
@@ -30,7 +37,7 @@ const WorkoutDetails = () => {
       <p>{workout.name}</p>
       <p>{workout.muscles}</p>
       <button>Edit</button>
-      <button>Delete</button>
+      <button onClick={handleDelete} >Delete</button>
     </div>
   )
 }

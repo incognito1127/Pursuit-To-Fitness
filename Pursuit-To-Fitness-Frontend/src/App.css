@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(135deg, #217393, #5a1605);
+  background: linear-gradient(135deg, #06a1df, #921c02);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,9 +8,30 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/* HEADER-1 */ 
+
+h1 {
+  font-family: "Rubik Doodle Shadow", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 90px;
+}
 .test{
   display: flex;
+  font-size: small;
+  justify-content: center;
+  flex-direction: row;
+  list-style: none; 
+  list-style-type: none;
 }
+
+ul {
+  list-style-type: none;
+  
+}
+
+/* HUMAN-BODY-DIAGRAM */
+
 .human-body {
   width: 207px;
   position: relative;
@@ -23,12 +44,12 @@ body {
   cursor: pointer;
 }
 .human-body svg:hover path {
-  fill: #ff1616;
+  fill: #fa0303b5;
 }
 .human-body svg {
   position: absolute;
   left: 50%;
-  fill: #16c7e3;
+  fill: #edf10d9f;
 }
 .human-body svg.head {
   margin-left: -28.5px;
@@ -42,7 +63,7 @@ body {
   margin-left: -78px;
   top: 112px;
 }
-.human-body svg.cheast {
+.human-body svg.chest {
   margin-left: -43.5px;
   top: 88px;
 }
@@ -73,3 +94,103 @@ body {
 #area #data {
   color: black;
 }
+
+/* NAVBAR */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 145px; /* Adjust the width as needed */
+  background-color: #c3bfbf1c;
+  padding-top: 3em;
+  z-index: 1000; /* Ensures the navbar is on top of other content */
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.nav-links a {
+  color: rgba(63, 61, 61, 0.867);
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 10px 0; /* Adjust padding as needed */
+}
+
+.nav-links a:hover {
+  background-color: #cae115;
+}
+
+/* FORM-CONTAINER */
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* HEADER-2 */
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* FORM-FOR-WORKOUT */
+
+.workout-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #b1acac;
+  border-radius: 4px;
+}
+
+.form-textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* WORKOUT-LIST-DETAILS */ 
+
