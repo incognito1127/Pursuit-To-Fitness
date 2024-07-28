@@ -24,13 +24,20 @@ const WorkoutDetails = () => {
 
   }, [id, navigate])
 
+  
+
+  if (!workout) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <h1>WorkoutDetails</h1>
       <p>{workout.name}</p>
       <p>{workout.muscles}</p>
-      <button>Edit</button>
-      <button>Delete</button>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/L6M0j6AwDGQ?si=OwCNFEYIUHJG-C5p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      
+      
     </div>
   )
 }
